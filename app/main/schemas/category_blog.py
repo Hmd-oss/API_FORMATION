@@ -1,0 +1,20 @@
+from typing import Optional
+from pydantic import BaseModel, ConfigDict
+from datetime import datetime
+
+class CategoryBlog(BaseModel):
+    name:str
+    description:Optional[str]
+
+class CategoryBlogCreate(CategoryBlog):
+    pass
+
+
+class CategoryBlogUpdated(BaseModel):
+    uuid:str
+    name:Optional[str]
+    description:Optional[str]
+
+    
+class CategoryBlogDeleted(BaseModel):
+    uuid:str 
