@@ -5,3 +5,4 @@ from .address import *
 from .category_blog import *
 from .blog import *
 from .product import *
+from .client import *
