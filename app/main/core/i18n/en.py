@@ -18,6 +18,9 @@ translation = {
     "user-deleted-successfully": "User deleted succesfully",
     "user-status-updated-successfully": "User status updated sucessfully",
     "category-blog-not-found":"category blog not found",
+    "product-deleted-successfully":"product deleted successfully",
+    "product-updated-successfully":"product updated successfully",
+    "this-quantity-already-sold":"this quantity already sold"
     
 
 

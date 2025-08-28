@@ -7,3 +7,4 @@ from .adress_crud import *
 from .client_crud import *
 from .categoryblog_crud import *
 from .product_crud import *
+from .sell_product_crud import *

@@ -7,6 +7,7 @@ from .address_controller import router as address
 from .category_blog_controlleur import router as category_blog
 from .client_controleur import router as client
 from .product_controlleur import router as product
+from .sell_product_controlleur import router as sell_product
 api_router = APIRouter()
 
 api_router.include_router(migration)
@@ -17,3 +18,4 @@ api_router.include_router(address)
 api_router.include_router(category_blog)
 api_router.include_router(client)
 api_router.include_router(product)
+api_router.include_router(sell_product)

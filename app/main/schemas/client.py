@@ -44,4 +44,10 @@ class ClientResponse(BaseModel):
     updated_at:Optional[datetime]
 
     model_config = ConfigDict(from_attributes=True)
-    
+
+
+class ClientSell(BaseModel):
+    uuid:str
+    first_name:str
+    last_name:Optional[str]
+    model_config = ConfigDict(from_attributes=True)

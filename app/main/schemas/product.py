@@ -40,3 +40,8 @@ class ProductResponse(BaseModel):
     updated_at:Optional[datetime]
 
     
+class ProductSell(BaseModel):
+    uuid:str
+    name:str
+    price:float
+    model_config = ConfigDict(from_attributes=True)

@@ -18,6 +18,9 @@ translation = {
     "user-deleted-successfully": "Utilisateur supprimé avec succès",
     "user-status-updated-successfully": "Statut de l'utilisateur mis à jour avec succès",
     "category-blog-not-found":"categorie blog introuvable",
+    "product-deleted-successfully":"produit supprimer avec succes",
+    "product-updated-successfully":"produit ameliorer avec succes",
+    "this-quantity-already-sold":"quantite deja vendu",
     
 
 
