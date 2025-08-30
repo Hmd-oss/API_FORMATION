@@ -25,7 +25,6 @@ from app.main.models.db.session import SessionLocal
 from app.main.schedulers import scheduler
 
 
-
 security = HTTPBasic()
 
 protocol = HTTPBearer(auto_error=False, scheme_name="Bearer")

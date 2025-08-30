@@ -9,11 +9,13 @@ from app.main.models.db.base_class import Base
 from enum import Enum
 
 
-class categoryBlog(Base):
-    __tablename__ = "category_blog"
-    uuid = Column(String,primary_key=True,index=True)
-    name = Column(String,unique=True,nullable=False)
-    description = Column(Text,nullable=True)
-    is_deleted = Column(Boolean,default=False)
+class CategoryBlog(Base):
+
+    __tablename__="category_blog"
+
+    uuid=Column(String,primary_key=True,index=True)
+    name=Column(String,unique=True,nullable=False)
+    description=Column(Text,nullable=True)
+    is_deleted=Column(Boolean,default=False)
     created_at = Column(DateTime, default=func.now())  # Account creation timestamp
     updated_at = Column(DateTime, default=func.now(), onupdate=func.now())  # Last update timestamp
