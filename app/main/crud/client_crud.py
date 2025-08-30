@@ -18,7 +18,7 @@ class CRUDclient(CRUDBase[models.Client,schemas.ClientCreate,schemas.ClientUpdat
     
     @classmethod
     def get_by_email(cls,db:Session,email:str):
-        return db.query(models.Client).filter(models.Client.email==email,models.Client.is_deleted==False)
+        return db.query(models.Client).filter(models.Client.email==email,models.Client.is_deleted==False).first()
     
 
     @classmethod
@@ -42,7 +42,7 @@ class CRUDclient(CRUDBase[models.Client,schemas.ClientCreate,schemas.ClientUpdat
 
     @classmethod
     def soft_delete(cls,db:Session,uuid:str):
-        db_obj=cls.get_by_uuid(db==db,uuid==uuid)
+        db_obj=cls.get_by_uuid(db=db,uuid=uuid)
         if not db_obj:
             raise HTTPException(status_code=404, detail="Client not found")
         db_obj.is_deleted=True
@@ -56,6 +56,7 @@ class CRUDclient(CRUDBase[models.Client,schemas.ClientCreate,schemas.ClientUpdat
             last_name=obj_in.last_name,
             phone_number=obj_in.phone_number,
             phone_number2=obj_in.phone_number2,
+            email=obj_in.email,
             country=obj_in.country,
             city=obj_in.city,
             additional=obj_in.additional,
@@ -72,14 +73,14 @@ class CRUDclient(CRUDBase[models.Client,schemas.ClientCreate,schemas.ClientUpdat
         if not db_obj:
             raise HTTPException(status_code=404, detail="Client not found")
         
-        db_obj.first_name = obj_in if obj_in.first_name else db_obj.first_name
-        db_obj.last_name = obj_in if obj_in.last_name else db_obj.last_name
-        db_obj.email = obj_in if obj_in.email else db_obj.email
-        db_obj.phone_number = obj_in if obj_in.phone_number else db_obj.phone_number
-        db_obj.phone_number2 = obj_in if obj_in.phone_number2 else db_obj.phone_number2
-        db_obj.country = obj_in if obj_in.country else db_obj.country
-        db_obj.city = obj_in if obj_in.city else db_obj.city
-        db_obj.additional = obj_in if obj_in.additional else db_obj.additional
+        db_obj.first_name = obj_in.first_name if obj_in.first_name else db_obj.first_name
+        db_obj.last_name = obj_in.last_name if obj_in.last_name else db_obj.last_name
+        db_obj.email = obj_in.email if obj_in.email else db_obj.email
+        db_obj.phone_number = obj_in.phone_number if obj_in.phone_number else db_obj.phone_number
+        db_obj.phone_number2 = obj_in.phone_number2 if obj_in.phone_number2 else db_obj.phone_number2
+        db_obj.country = obj_in.country if obj_in.country else db_obj.country
+        db_obj.city = obj_in.city if obj_in.city else db_obj.city
+        db_obj.additional = obj_in.additional if obj_in.additional else db_obj.additional
         db.commit()
         db.refresh(db_obj)
         return db_obj

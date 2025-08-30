@@ -14,7 +14,6 @@ class Product(Base):
    __tablename__ = "products"
    uuid = Column(String,primary_key=True,index=True)
    name = Column(String,unique=True,nullable=False)
-   price = Column(Float,unique=True,nullable=False)
    quantity = Column(Float,unique=True,nullable=False)
    pu = Column(Float,unique=True,nullable=False)
    pa = Column(Float,unique=True,nullable=False)

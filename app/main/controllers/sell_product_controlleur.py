@@ -30,6 +30,7 @@ async def create_SellProduct(
         obj_in=obj_in,
         added_by=current_user.uuid
     )
+    return schemas.Msg(message=__(key="OK"))
 
     
 
@@ -53,6 +54,7 @@ async def update_SellProduct(
         obj_in=obj_in,
         added_by=current_user.uuid
     )
+    return schemas.Msg(message=__(key="OK"))
 
 @router.delete("/delete",response_model=schemas.Msg,status_code=200)
 async def delete_SellProduct(

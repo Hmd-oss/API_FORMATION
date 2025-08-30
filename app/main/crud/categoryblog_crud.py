@@ -53,7 +53,7 @@ class CRUDcategoryblog(CRUDBase[models.categoryBlog,schemas.CategoryBlogCreate,s
         return db_obj
     
     @classmethod
-    def updated(cls,db:Session,obj_in:schemas.CategoryBlogUpdated):
+    def update(cls,db:Session,obj_in:schemas.CategoryBlogUpdated):
         db_obj = cls.get_by_uuid(db=db,uuid=obj_in.uuid)
         if not db_obj:
             raise HTTPException(status_code=404,detail="categoryblog not found")

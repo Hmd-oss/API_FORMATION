@@ -4,7 +4,6 @@ from datetime import datetime
 
 class Product(BaseModel):
     name:str
-    price:float
     quantity:float
     pu:float
     pa:float
@@ -17,7 +16,6 @@ class ProductCreate(Product):
 class ProductUpdated(BaseModel):
     uuid:str
     name:Optional[str]
-    price:Optional[float]
     quantity:Optional[float]
     pu:Optional[float]
     pa:Optional[float]
@@ -30,7 +28,6 @@ class ProductDeleted(BaseModel):
 class ProductResponse(BaseModel):
     uuid:str
     name:str
-    price:float
     quantity:float
     pu:float
     pa:float
@@ -43,5 +40,5 @@ class ProductResponse(BaseModel):
 class ProductSell(BaseModel):
     uuid:str
     name:str
-    price:float
+    pa:float
     model_config = ConfigDict(from_attributes=True)

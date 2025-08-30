@@ -39,7 +39,6 @@ async def update_client(
     db: Session = Depends(get_db),
     obj_in:schemas.ClientUpdate,
 ):
-    
     exist_phone_number = crud.client.get_by_phone_number(db=db,phone_number=obj_in.phone_number)
     if exist_phone_number:
         raise HTTPException(status_code=409, detail="this phone_number already exist")
@@ -52,7 +51,7 @@ async def update_client(
         exist_phone_number2=crud.client.get_by_phone_number2(db=db,phone_number2=obj_in.phone_number2)
         if exist_phone_number2:
             raise HTTPException(status_code=409, detail="this phone number already exist")
-        
+    
     crud.client.update(db=db,obj_in=obj_in)
     return schemas.Msg(message=__(key="client-updated-successfully"))
 
@@ -76,6 +75,6 @@ async def soft_delete_client(
     obj_in:schemas.ClientDelete,
     
 ):
-    crud.client_crud.soft_delete(db=db,uuid=obj_in.uuid)
+    crud.client.soft_delete(db=db,uuid=obj_in.uuid)
     return schemas.Msg(message=__(key="client-deleted-successfully"))
 

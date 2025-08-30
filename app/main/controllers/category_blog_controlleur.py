@@ -35,12 +35,7 @@ async def update_category_blog(
     obj_in:schemas.CategoryBlogUpdated,
 
 ):
-    
-    exist_name = crud.category_blog.get_by_name(db=db,name=obj_in.name)
-    if exist_name:
-        raise HTTPException(status_code=409, detail="this name already exist")
-    
-    crud.CRUDcategoryblog.update(db=db,obj_in=obj_in)
+    crud.category_blog.update(db=db,obj_in=obj_in)
     return schemas.Msg(message=__(key="category_blog-updated-successfully"))
 
 @router.delete("/delete",response_model=schemas.Msg,status_code=200)

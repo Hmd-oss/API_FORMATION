@@ -53,14 +53,14 @@ class CRUDproduct(CRUDBase[models.Product,schemas.ProductCreate,schemas.ProductU
         return db_obj
     
     @classmethod
-    def update(cls,db:Session,obj_in:schemas.Product):
+    def update(cls,db:Session,obj_in:schemas.ProductUpdated):
         db_obj = cls.get_by_uuid(db=db,uuid=obj_in.uuid)
         if not db_obj:
             raise HTTPException(status_code=404, detail="Product not found")
-        db_obj.name=obj_in if obj_in.name else db_obj.name
-        db_obj.pu=obj_in if obj_in.pu else db_obj.pu
-        db_obj.pa=obj_in if obj_in.pa else db_obj.pa
-        db_obj.price=obj_in if obj_in.price else db_obj.price
-
+        db_obj.name=obj_in.name if obj_in.name else db_obj.name
+        db_obj.pu=obj_in.pu if obj_in.pu else db_obj.pu
+        db_obj.pa=obj_in.pa if obj_in.pa else db_obj.pa
+        db_obj.stock_limit=obj_in.stock_limit if obj_in.stock_limit else db_obj.stock_limit
+        
 product = CRUDproduct(models.client)
         

@@ -27,13 +27,9 @@ async def create_product(
 async def update_product(
     *,
     db: Session = Depends(get_db),
-    obj_in:schemas.ProductCreate
+    obj_in:schemas.ProductUpdated
 
 ):
-    exist_name = crud.product.get_by_name(db=db,name=obj_in.name)
-    if exist_name:
-        raise HTTPException(status_code=409, detail="this name already exist")
-    
     crud.product.update(db=db,obj_in=obj_in)
     return schemas.Msg(message=__(key="product-updated-successfully"))
 
